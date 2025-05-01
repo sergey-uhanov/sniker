@@ -34,7 +34,7 @@ const logoArr = [{logo:'@/assets/img/home/4.png', alt:'logo'}]
   width: 30vw;
   height: 200px;
   background: #456;
-  margin-right:  5vw;
+  border: 1px solid #321;
   flex-shrink: 0;
   transition: transform .3s;
 }

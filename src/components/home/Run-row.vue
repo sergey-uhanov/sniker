@@ -7,17 +7,17 @@ const {logosSrc, animationDuration, logoWidth, logoHeight} = defineProps({
     default: [
       {
         link: 'https://www.nike.com',
-        imgSrc: '/src/assets/img/home/4.png',
+        imgSrc: '/sniker/img/home/4.png',
         name: 'nike'
       },
       {
         link: 'https://www.adidas.ua/',
-        imgSrc: '/src/assets/img/home/44.png',
+        imgSrc: '/sniker/img/home/44.png',
         name: 'nike'
       },
       {
         link: 'https://ua.puma.com/uk/',
-        imgSrc: '/src/assets/img/home/444.png',
+        imgSrc: '/sniker/img/home/444.png',
         name: 'nike'
       }
     ]
