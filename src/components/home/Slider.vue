@@ -1,40 +1,55 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import {onMounted, ref,useSlots} from "vue";
+
+const slots = useSlots();
+
+const props = defineProps({
+  quantity: {
+    type: Number,
+    default: 3
+  }
+})
 
 const slider = ref(null);
 const wrapper = ref(null);
+const container = ref(null);
 const shift = ref(0);
 const step = ref(0);
 const visibleWidth = ref(0);
 const totalWidth = ref(0);
 const spaceBetween = ref(0);
+const quantitySlideVisible = ref(props.quantity);
 
 
 onMounted(() => {
   const slides = wrapper.value.children;
 
+  visibleWidth.value = container.value.clientWidth;
+
   step.value = slides[0].clientWidth + spaceBetween.value;
 
-  visibleWidth.value = slider.value.clientWidth;
+  spaceBetween.value = +((visibleWidth.value - (step.value * quantitySlideVisible.value)) / (quantitySlideVisible.value - 1)).toFixed(2)
 
-  totalWidth.value = wrapper.value.scrollWidth;
+  totalWidth.value = wrapper.value.scrollWidth + ((spaceBetween.value * slides.length - 1) - spaceBetween.value);
 });
 
 
 function applyTransform() {
   wrapper.value.style.transform = `translateX(${shift.value}px)`;
+
 }
 
 
 function nextStep() {
-  const maxShift = -(totalWidth.value - visibleWidth.value);
-  shift.value = Math.max(shift.value - step.value, maxShift);
+  const maxShift = +(totalWidth.value - visibleWidth.value);
+  shift.value = Math.max(shift.value - (step.value + spaceBetween.value), -maxShift);
   applyTransform();
 }
 
 
 function prevStep() {
-  shift.value = Math.min(shift.value + step.value, 0); // Не дальше начала
+  shift.value = Math.min(shift.value + (step.value + spaceBetween.value), 0);
+
   applyTransform();
 }
 
@@ -60,33 +75,44 @@ function onDrag(event) {
   }
 }
 
-function endDrag(event) {
+function endDrag() {
   isDragging = false;
   const maxShift = -(totalWidth.value - visibleWidth.value);
   const snappedShift = Math.round(shift.value / step.value) * step.value;
-  shift.value = Math.min(Math.max(snappedShift, maxShift), 0); // Привязка к ближайшему слайду
+
+  console.log(snappedShift)
+  console.log( maxShift)
+
+  shift.value = Math.min(Math.max(snappedShift, maxShift), 0);
   applyTransform();
 }
 </script>
 
 <template>
   <section class="slider" ref="slider">
-    <div
-        class="slider__wrapper"
-        @mousedown="startDrag"
-        @touchstart="startDrag"
-        @mousemove="onDrag"
-        @touchmove="onDrag"
-        @mouseup="endDrag"
-        @touchend="endDrag"
-        ref="wrapper"
-    >
-      <slot></slot>
+    <div class="slider__container" ref="container">
+      <div class="slider__header" v-if="$slots.title || $slots.nav">
+        <div class="slider__title" v-if="$slots.title">
+          <slot name="title"/>
+        </div>
+        <nav class="slider__nav-btn-block" v-if="$slots.nav">
+          <slot name="nav" :next="nextStep" :prev="prevStep" />
+        </nav>
+      </div>
+      <div
+          class="slider__wrapper"
+          @mousedown="startDrag"
+          @touchstart="startDrag"
+          @mousemove="onDrag"
+          @touchmove="onDrag"
+          @mouseup="endDrag"
+          @touchend="endDrag"
+          ref="wrapper"
+      >
+        <slot name="slides" :spaceBetween="spaceBetween"/>
+      </div>
+      
     </div>
-    <nav class="slider__nav-btn-block">
-      <button class="slider__prev-btn" @click="prevStep">&lt;</button>
-      <button class="slider__next-btn" @click="nextStep">&gt;</button>
-    </nav>
   </section>
 </template>
 

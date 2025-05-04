@@ -53,6 +53,7 @@ const logos = computed(() => {
 onMounted(() => {
   let lastTime = performance.now();
 
+
   function step(now) {
     const delta = (now - lastTime) / 1000;
     lastTime = now;
@@ -75,9 +76,9 @@ onMounted(() => {
 });
 
 const handleResize = () => {
+  count.value = Math.ceil(window.innerWidth / logoWidth + 1);
   const currentTotal = logoWidth * count.value;
   const fraction = currentTotal > 0 ? offset.value / currentTotal : 0;
-  count.value = Math.ceil(window.innerWidth / logoWidth + 1);
   const newTotal = logoWidth * count.value;
   offset.value = fraction * newTotal;
 };
@@ -92,11 +93,12 @@ const handleResize = () => {
       >
         <a v-for="(logo, idx) in [...logos, ...logos]" :href=logo.link>
           <img
-              :key="idx + logo"
+              :key="logo.imgSrc"
               class="run-row__logo"
               :src="`${logo.imgSrc}`"
               alt="logo"
               :style="`width: ${logoWidth}px; height: ${logoHeight}px;`"
+
           />
         </a>
       </div>
@@ -105,6 +107,8 @@ const handleResize = () => {
 </template>
 
 <style lang="scss">
+
+
 .run-row {
   overflow: hidden;
 
