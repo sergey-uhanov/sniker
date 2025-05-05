@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref,useSlots} from "vue";
+import {onMounted, ref, useSlots} from "vue";
 
 const slots = useSlots();
 
@@ -56,16 +56,25 @@ function prevStep() {
 
 let startPos = 0;
 let initialShift = 0;
-let isDragging = false;
+let isDragging = ref(false);
 
 function startDrag(event) {
-  isDragging = true;
+  event.preventDefault();
+  isDragging.value = true;
   const evt = event.type.startsWith('touch') ? event.touches[0] : event;
   startPos = evt.clientX;
   initialShift = shift.value;
+
+
+
+  document.addEventListener('mousemove', onDrag);
+  document.addEventListener('touchmove', onDrag);
+  document.addEventListener('mouseup', endDrag);
+  document.addEventListener('touchend', endDrag);
 }
 
 function onDrag(event) {
+  event.preventDefault();
   if (isDragging) {
     const evt = event.type.startsWith('touch') ? event.touches[0] : event;
     const diff = evt.clientX - startPos;
@@ -76,42 +85,42 @@ function onDrag(event) {
 }
 
 function endDrag() {
-  isDragging = false;
+
+  isDragging.value= false;
   const maxShift = -(totalWidth.value - visibleWidth.value);
   const snappedShift = Math.round(shift.value / step.value) * step.value;
 
-  console.log(snappedShift)
-  console.log( maxShift)
-
   shift.value = Math.min(Math.max(snappedShift, maxShift), 0);
   applyTransform();
+
+  document.removeEventListener('mousemove', onDrag);
+  document.removeEventListener('touchmove', onDrag);
+  document.removeEventListener('mouseup', endDrag);
+  document.removeEventListener('touchend', endDrag);
 }
 </script>
 
 <template>
   <section class="slider" ref="slider">
     <div class="slider__container" ref="container">
-      <div class="slider__header" v-if="$slots.title || $slots.nav">
-        <div class="slider__title" v-if="$slots.title">
+      <div class="slider__header">
+        <div class="slider__title">
           <slot name="title"/>
         </div>
-        <nav class="slider__nav-btn-block" v-if="$slots.nav">
-          <slot name="nav" :next="nextStep" :prev="prevStep" />
+        <nav class="slider__nav-btn-block">
+          <slot name="nav" :next="nextStep" :prev="prevStep"/>
         </nav>
       </div>
       <div
           class="slider__wrapper"
           @mousedown="startDrag"
           @touchstart="startDrag"
-          @mousemove="onDrag"
-          @touchmove="onDrag"
-          @mouseup="endDrag"
-          @touchend="endDrag"
+          :style="{cursor: isDragging ? 'grabbing' : 'grab'}"
           ref="wrapper"
       >
         <slot name="slides" :spaceBetween="spaceBetween"/>
       </div>
-      
+
     </div>
   </section>
 </template>
@@ -126,6 +135,7 @@ function endDrag() {
     touch-action: none;
     will-change: transform;
     transition: transform .3s;
+    //cursor: grab;
   }
 
   &__nav-btn-block {

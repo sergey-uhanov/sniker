@@ -77,6 +77,8 @@ const cardsForSlider = [
         />
 
       </template>
+
+
     </Slider>
   </main>
 </template>
