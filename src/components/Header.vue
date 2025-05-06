@@ -5,7 +5,7 @@ import SearchInput from "@/components/UI/header/Search-input.vue";
 import CartIcon from "@/components/icons/home/cart-icon.vue";
 
 import Logo from "@/components/UI/header/Logo.vue";
-import {inject, onMounted, ref, watch} from 'vue'
+import {inject, ref, watch} from 'vue'
 import BurgerMenuIcon from "@/components/UI/header/Burger-menu-icon.vue";
 import NavMenu from "@/components/UI/header/Filter-menu.vue";
 import BurgerMenu from "@/components/UI/header/Burger-menu.vue";
@@ -52,10 +52,10 @@ const handleSwipe = () => {
 };
 
 
-onMounted(() => {
-  document.addEventListener('touchstart', handleTouchStart);
-  document.addEventListener('touchend', handleTouchEnd);
-});
+// onMounted(() => {
+//   document.addEventListener('touchstart', handleTouchStart);
+//   document.addEventListener('touchend', handleTouchEnd);
+// });
 
 
 </script>
@@ -75,7 +75,7 @@ onMounted(() => {
       </div>
     </div>
     <div ref="menuRef">
-      <Burger-menu :isOpen="isOpen" />
+      <Burger-menu :isOpen />
     </div>
   </header>
 </template>
