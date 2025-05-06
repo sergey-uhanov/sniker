@@ -41,11 +41,17 @@ const props = defineProps({
   position: relative;
 
   @include media-breakpoint-down(sm) {
-    max-width: 300px;
-    margin-right: 30px;
+    max-width: 50vw;
+    transform: scale(0.85);
+    padding: 20px 27px;
   }
 
-  &__bg-text{
+  @include media-breakpoint-down(xxs) {
+    max-width: 62.8vw;
+
+  }
+
+  &__bg-text {
     content: 'NIKE';
     position: absolute;
     top: 50%;
@@ -58,6 +64,15 @@ const props = defineProps({
     text-align: center;
     color: rgba(0, 0, 0, 0.1);
     z-index: 1;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 120px;
+      top: 40%;
+    }
+
+    @include media-breakpoint-down(sm) {
+      font-size: 100px;
+    }
   }
 
   &__wrapper-img {
@@ -66,13 +81,17 @@ const props = defineProps({
     margin-bottom: 16px;
     position: relative;
     z-index: 10;
+
+    @include media-breakpoint-down(xs) {
+      max-width: 200px;
+      height: 200px;
+    }
   }
 
   &__img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-
+    object-fit: contain;
   }
 
   &__title {
@@ -82,6 +101,10 @@ const props = defineProps({
     margin-bottom: 30px;
     position: relative;
     z-index: 10;
+
+    @include media-breakpoint-down(xs) {
+      font-size: 25px;
+    }
   }
 
   &__price {
@@ -90,16 +113,33 @@ const props = defineProps({
     font-size: 20px;
     position: relative;
     z-index: 10;
+
+    @include media-breakpoint-down(xs) {
+      font-size: 16px;
+    }
   }
 
   &__link {
     position: absolute;
     bottom: 30px;
     right: 30px;
+
+    @include media-breakpoint-down(xs) {
+      bottom: 20px;
+      right: 20px;
+
+      svg {
+        width: 35px;
+        height: 35px;
+      }
+    }
   }
 }
 
 .card.active {
-  transform: scale(1.2);
+  @include media-breakpoint-down(sm) {
+    transform: scale(1);
+  }
+
 }
 </style>

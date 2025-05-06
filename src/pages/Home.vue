@@ -59,15 +59,19 @@ const cardsForSlider = [
     <Never-done/>
     <run-row/>
     <Banner/>
-    <Slider :initialIndex="1">
+    <Slider :initialIndex="0" :center='true'>
 
       <template #title>
         Top sneakers
       </template>
 
       <template #nav="{next, prev}">
-        <button class="slider-btn-prev" @click="prev"><nav-row/></button>
-        <button class="slider-btn-next" @click="next"><nav-row/></button>
+        <button class="slider-btn-prev" @click="prev">
+          <nav-row/>
+        </button>
+        <button class="slider-btn-next" @click="next">
+          <nav-row/>
+        </button>
       </template>
 
       <template #slides="{ activeIndex }">
@@ -75,9 +79,7 @@ const cardsForSlider = [
                :key="item.id"
                :item="item"
                :isActiveClass="index === activeIndex ? 'active' : ''"
-
         />
-
       </template>
 
 
@@ -87,7 +89,7 @@ const cardsForSlider = [
 
 <style lang="scss">
 
-%nav-btn{
+%nav-btn {
   width: 55px;
   height: 55px;
   border-radius: 50px;
@@ -96,15 +98,22 @@ const cardsForSlider = [
   align-items: center;
   justify-content: center;
 
-  &:active{
+  @include media-breakpoint-down(xs) {
+    width: 25px;
+    height: 25px;
+  }
+
+  &:active {
     background: #c6c6c6;
   }
 }
-.slider-btn-prev{
+
+.slider-btn-prev {
   @extend %nav-btn
 
 }
-.slider-btn-next{
+
+.slider-btn-next {
   @extend %nav-btn;
   transform: rotate(180deg);
 }
