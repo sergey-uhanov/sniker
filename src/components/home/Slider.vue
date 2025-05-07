@@ -1,7 +1,6 @@
 <script setup>
-import {inject, onMounted, ref, useSlots} from "vue";
+import {computed, inject, onMounted, ref} from "vue"
 
-const slots = useSlots();
 
 const props = defineProps({
   quantity: {
@@ -17,44 +16,45 @@ const props = defineProps({
     default: false
   }
 })
-const isMobile = inject('isMobile');
-const slider = ref(null);
-const wrapper = ref(null);
-const container = ref(null);
-const shift = ref(0);
-const step = ref(0);
-const visibleWidth = ref(0);
-const totalWidth = ref(0);
-const spaceBetween = ref(0);
-const quantitySlideVisible = ref(props.quantity);
-const activeIndex = ref(props.initialIndex);
-const isCenter = ref(false);
+const isMobile = inject('isMobile')
+const wrapper = ref(null)
+const container = ref(null)
+const shift = ref(0)
+const step = ref(0)
+const spaceBetween = ref(0)
+const activeIndex = ref(props.initialIndex)
+
+const fullStep = computed(() => step.value + spaceBetween.value)
+
+let visibleWidth = 0
+let totalWidth = 0
+let quantitySlideVisible = props.quantity
+
 
 function updateSizes() {
-  const slides = wrapper.value.children;
-  visibleWidth.value = container.value.clientWidth;
-
-  step.value = slides[0].clientWidth;
+  const slides = wrapper.value.children
+  visibleWidth = container.value.clientWidth
+  step.value = slides[0].clientWidth
   calculateSpace()
-  totalWidth.value = (step.value * slides.length) + (spaceBetween.value * (slides.length - 1));
+  totalWidth = ((step.value + spaceBetween.value) * slides.length) - spaceBetween.value
 
-  if (isMobile && quantitySlideVisible.value === 3 && props.center) {
-    isCenter.value = true;
-  }
 }
 
 
 function calculateSpace() {
-  const result =
-      ((visibleWidth.value) - step.value * quantitySlideVisible.value)
-      / (quantitySlideVisible.value - 1)
-  ;
+
+
+
+  const result = ((visibleWidth) - step.value * quantitySlideVisible) / ((quantitySlideVisible - 1) ? quantitySlideVisible - 1: 1)
+  console.log(result)
   spaceBetween.value = result < 15 ? 15 : result;
 }
 
 onMounted(() => {
+  quantitySlideVisible = props.quantity
   updateSizes();
   window.addEventListener('resize', updateSizes);
+
 
 })
 
@@ -64,61 +64,45 @@ function applyTransform() {
 }
 
 function getMaxShift() {
-  const result = totalWidth.value - visibleWidth.value
-
-  if (isMobile.value && quantitySlideVisible.value === 3) {
-    return result + step.value + spaceBetween.value
-  }
-  return result + step.value
+  return totalWidth - visibleWidth + step.value
 }
 
 function getMinShift() {
-  if (isMobile.value && quantitySlideVisible.value === 3) {
-    return (step.value + spaceBetween.value)
-  }
-
   return 0
 }
 
 
 function nextStep() {
+  if (getMaxShift() > -(shift.value - fullStep.value)) {
 
-  const fullStep = step.value + spaceBetween.value
-
-  if (getMaxShift() > -(shift.value - fullStep - 1) && getMinShift() < -(shift.value - fullStep - 1)) {
-    const fullStep = step.value + spaceBetween.value
-    const countStep = Math.round((shift.value / fullStep) - 1)
-    shift.value = fullStep * countStep
+    const countStep = Math.round((shift.value / fullStep.value) - 1)
+    shift.value = fullStep.value * countStep
     changeIndex(activeIndex.value + 1)
-
   }
+
   applyTransform();
 }
 
 
 function prevStep() {
-  const fullStep = step.value + spaceBetween.value
+  if (getMinShift() <= -(shift.value + fullStep.value)) {
 
-
-  if (getMinShift() < -(shift.value - (fullStep))) {
-
-    const fullStep = step.value + spaceBetween.value
-    const countStep = Math.round((shift.value / fullStep) + 1)
-    shift.value = fullStep * countStep
+    const countStep = Math.round((shift.value / fullStep.value) + 1)
+    shift.value = fullStep.value * countStep
     changeIndex(activeIndex.value - 1)
-
   }
+
   applyTransform();
 }
 
 
 let startPos = 0
 let initialShift = 0
-let isDragging = ref(false)
+let isDragging = false
 
 function startDrag(event) {
   event.preventDefault()
-  isDragging.value = true
+  isDragging = true
   const evt = event.type.startsWith('touch') ? event.touches[0] : event
   startPos = evt.clientX
   initialShift = shift.value
@@ -136,23 +120,38 @@ function onDrag(event) {
   if (isDragging) {
     const evt = event.type.startsWith('touch') ? event.touches[0] : event
     const diff = evt.clientX - startPos
-    const maxShift = -getMaxShift()
-    if (maxShift < (initialShift + diff))
-      shift.value = initialShift + diff
+
+    shift.value = initialShift + diff
     applyTransform();
   }
 }
 
-function endDrag(event) {
-  isDragging.value = false
-  const fullStep = step.value + spaceBetween.value
+function endDrag() {
+  isDragging = false
+  let  countStep = 0
 
-  const countStep = Math.round(shift.value / fullStep)
-  shift.value = fullStep * countStep
+  if(quantitySlideVisible === 1){
+
+    countStep = Math.round(shift.value / fullStep.value)
+    console.log(shift.value / fullStep.value)
+  }else {
+     countStep = Math.round(shift.value / fullStep.value)
+  }
+
+
+  shift.value = fullStep.value * countStep
 
 
   if (shift.value > 0) {
     shift.value = 0
+  }
+
+  if (-shift.value > totalWidth - fullStep.value && !isMobile.value) {
+    shift.value += fullStep.value
+  }
+
+  if (-countStep >= wrapper.value.children.length) {
+    shift.value += fullStep.value * ((-countStep - wrapper.value.children.length) + 1)
   }
 
   changeIndex(-countStep, activeIndex.value)
@@ -173,8 +172,8 @@ function changeIndex(value) {
 </script>
 
 <template>
-  <section class="slider" ref="slider">
-    <div class="slider__container" >
+  <section class="slider">
+    <div class="slider__container">
       <div class="slider__header">
         <div class="slider__title">
           <slot name="title"/>
@@ -183,7 +182,7 @@ function changeIndex(value) {
           <slot name="nav" :next="nextStep" :prev="prevStep"/>
         </nav>
       </div>
-      <div class="slider__center-content" ref="container" :class="isCenter? 'center':''">
+      <div class="slider__center-content" ref="container" :class="props.center? 'center':''">
         <div
             class="slider__wrapper"
             @mousedown="startDrag"
@@ -219,7 +218,7 @@ function changeIndex(value) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 33px 0;
+    padding: 33px 0 10px 0;
   }
 
   &__title {
@@ -241,7 +240,7 @@ function changeIndex(value) {
     column-gap: 25px;
 
 
-    svg{
+    svg {
       @include media-breakpoint-down(xs) {
         width: 11px;
         height: 8px;
@@ -250,7 +249,7 @@ function changeIndex(value) {
   }
 }
 
-.center{
+.center {
   @include media-breakpoint-down(sm) {
     position: relative;
     left: 25vw;

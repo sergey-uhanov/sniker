@@ -5,6 +5,11 @@ import Banner from "@/components/home/Banner.vue";
 import Slider from "@/components/home/Slider.vue";
 import Slide from "@/components/UI/Slide.vue";
 import NavRow from "@/components/icons/home/nav-row.vue";
+import Promo from "@/components/home/Promo.vue";
+import Summertime from "@/components/home/Summertime.vue";
+import Category from "@/components/home/Category.vue";
+import LooksGood from "@/components/home/Looks-good.vue";
+
 
 const cardsForSlider = [
   {
@@ -12,7 +17,7 @@ const cardsForSlider = [
     name: 'Air Max 97',
     price: 20.99,
     url: 'sdfs',
-    src: '/sniker/img/home/shoes1.png'
+    src: '/sniker/img/home/shoes3.png'
   },
   {
     id: 2,
@@ -26,7 +31,7 @@ const cardsForSlider = [
     name: 'KD13 EP',
     price: 50.99,
     url: 'sdfs',
-    src: '/sniker/img/home/shoes3.png'
+    src: '/sniker/img/home/shoes1.png'
   },
   {
     id: 4,
@@ -59,35 +64,40 @@ const cardsForSlider = [
     <Never-done/>
     <run-row/>
     <Banner/>
-    <Slider :initialIndex="0" :center='true'>
+    <Promo/>
+    <Summertime/>
+<!--    <Slider :initialIndex="0" :center='true'>-->
 
-      <template #title>
-        Top sneakers
-      </template>
+<!--      <template #title>-->
+<!--        Top sneakers-->
+<!--      </template>-->
 
-      <template #nav="{next, prev}">
-        <button class="slider-btn-prev" @click="prev">
-          <nav-row/>
-        </button>
-        <button class="slider-btn-next" @click="next">
-          <nav-row/>
-        </button>
-      </template>
+<!--      <template #nav="{next, prev}">-->
+<!--        <button class="slider-btn-prev" @click="prev">-->
+<!--          <nav-row/>-->
+<!--        </button>-->
+<!--        <button class="slider-btn-next" @click="next">-->
+<!--          <nav-row/>-->
+<!--        </button>-->
+<!--      </template>-->
 
-      <template #slides="{ activeIndex }">
-        <Slide #slides v-for="(item, index) in cardsForSlider"
-               :key="item.id"
-               :item="item"
-               :isActiveClass="index === activeIndex ? 'active' : ''"
-        />
-      </template>
-
-
-    </Slider>
+<!--      <template #slides="{ activeIndex }">-->
+<!--        <Slide #slides v-for="(item, index) in cardsForSlider"-->
+<!--               :key="item.id"-->
+<!--               :item="item"-->
+<!--               :isActiveClass="index === activeIndex ? 'active' : ''"-->
+<!--        />-->
+<!--      </template>-->
+<!--    </Slider>-->
+    <Category/>
+    <LooksGood/>
   </main>
 </template>
 
 <style lang="scss">
+.main {
+  overflow: hidden;
+}
 
 %nav-btn {
   width: 55px;

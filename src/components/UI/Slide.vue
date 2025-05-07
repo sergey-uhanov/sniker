@@ -37,7 +37,7 @@ const props = defineProps({
   border-radius: 18px;
   display: flex;
   flex-direction: column;
-  padding: 67px 37px;
+  padding: 40px 0 67px 0px;
   position: relative;
 
   @include media-breakpoint-down(sm) {
@@ -54,7 +54,7 @@ const props = defineProps({
   &__bg-text {
     content: 'NIKE';
     position: absolute;
-    top: 50%;
+    top: 50.6%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(90deg);
     font-family: $third-family;
@@ -76,29 +76,36 @@ const props = defineProps({
   }
 
   &__wrapper-img {
-    max-width: 291px;
-    height: 251px;
-    margin-bottom: 16px;
+    max-width: 400px;
+    width: 100%;
+    max-height: 350px;
+    height: 100%;
+    margin-bottom: 27px;
     position: relative;
     z-index: 10;
+
 
     @include media-breakpoint-down(xs) {
       max-width: 200px;
       height: 200px;
+
     }
   }
 
   &__img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &__title {
     font-family: $second-family;
     font-weight: 700;
     font-size: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 33px;
+    margin-left: 45px;
     position: relative;
     z-index: 10;
 
@@ -113,6 +120,7 @@ const props = defineProps({
     font-size: 20px;
     position: relative;
     z-index: 10;
+    margin-left: 45px;
 
     @include media-breakpoint-down(xs) {
       font-size: 16px;
@@ -121,7 +129,7 @@ const props = defineProps({
 
   &__link {
     position: absolute;
-    bottom: 30px;
+    bottom: 25px;
     right: 30px;
 
     @include media-breakpoint-down(xs) {
