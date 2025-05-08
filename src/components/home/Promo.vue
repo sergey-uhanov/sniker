@@ -1,4 +1,4 @@
-<script setup="">
+<script setup>
 
 import PromoCard from "@/components/UI/Promo-card.vue";
 import LinkRow from "@/components/icons/home/link-row.vue";
@@ -12,7 +12,7 @@ import LinkRow from "@/components/icons/home/link-row.vue";
           src="/sniker/img/home/shoes4.png"
           link="example.com"
       >
-        <a class="promo-link" :href=link>
+        <a class="promo-link" href='#'>
           <link-row/>
         </a>
       </PromoCard>
@@ -21,7 +21,7 @@ import LinkRow from "@/components/icons/home/link-row.vue";
           src="/sniker/img/home/shoes5.png"
           link="example.com"
       >
-        <a class="promo-link" :href=link>
+        <a class="promo-link" href="#">
           <link-row/>
         </a>
       </PromoCard>
@@ -39,8 +39,8 @@ import LinkRow from "@/components/icons/home/link-row.vue";
 
   &__container {
     display: flex;
-    justify-content: space-between;
-    gap: 50px;
+
+    gap: 67px;
     @media (max-width: 1080px) {
       flex-direction: column;
       max-width: 700px;

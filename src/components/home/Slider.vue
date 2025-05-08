@@ -1,5 +1,5 @@
 <script setup>
-import {computed, inject, onMounted, ref} from "vue"
+import {computed, inject, onMounted, ref, useSlots} from "vue"
 
 
 const props = defineProps({
@@ -14,8 +14,21 @@ const props = defineProps({
   center: {
     type: Boolean,
     default: false
+  },
+  space:{
+    type: Number,
+    default: 0
+  },
+  minSpace:{
+    type: Number,
+    default: 15
   }
 })
+const slots = useSlots()
+
+const hasTitleSlot = !!slots.title
+const hasNavSlot = !!slots.nav
+
 const isMobile = inject('isMobile')
 const wrapper = ref(null)
 const container = ref(null)
@@ -42,12 +55,14 @@ function updateSizes() {
 
 
 function calculateSpace() {
+  const result = ((visibleWidth) - step.value * quantitySlideVisible) / ((quantitySlideVisible - 1) ? quantitySlideVisible - 1 : 1)
 
+  if(props.space == 0){
+    spaceBetween.value = result < props.minSpace ? props.minSpace : result;
+  } else{
+    spaceBetween.value =  result < props.minSpace ? props.minSpace : props.space;
+  }
 
-
-  const result = ((visibleWidth) - step.value * quantitySlideVisible) / ((quantitySlideVisible - 1) ? quantitySlideVisible - 1: 1)
-  console.log(result)
-  spaceBetween.value = result < 15 ? 15 : result;
 }
 
 onMounted(() => {
@@ -128,15 +143,8 @@ function onDrag(event) {
 
 function endDrag() {
   isDragging = false
-  let  countStep = 0
 
-  if(quantitySlideVisible === 1){
-
-    countStep = Math.round(shift.value / fullStep.value)
-    console.log(shift.value / fullStep.value)
-  }else {
-     countStep = Math.round(shift.value / fullStep.value)
-  }
+  const countStep = Math.round(shift.value / fullStep.value)
 
 
   shift.value = fullStep.value * countStep
@@ -174,7 +182,7 @@ function changeIndex(value) {
 <template>
   <section class="slider">
     <div class="slider__container">
-      <div class="slider__header">
+      <div class="slider__header" v-if="hasNavSlot && hasTitleSlot">
         <div class="slider__title">
           <slot name="title"/>
         </div>
@@ -193,9 +201,7 @@ function changeIndex(value) {
           <slot name="slides" :activeIndex="activeIndex"/>
         </div>
       </div>
-
     </div>
-
   </section>
 </template>
 
@@ -210,7 +216,6 @@ function changeIndex(value) {
     will-change: transform;
     transition: transform .3s;
     padding: 20px 0;
-
   }
 
 

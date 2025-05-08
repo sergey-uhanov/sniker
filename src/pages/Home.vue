@@ -9,6 +9,8 @@ import Promo from "@/components/home/Promo.vue";
 import Summertime from "@/components/home/Summertime.vue";
 import Category from "@/components/home/Category.vue";
 import LooksGood from "@/components/home/Looks-good.vue";
+import MoreProducts from "@/components/home/More-products.vue";
+import Glory from "@/components/home/Glory.vue";
 
 
 const cardsForSlider = [
@@ -66,31 +68,33 @@ const cardsForSlider = [
     <Banner/>
     <Promo/>
     <Summertime/>
-<!--    <Slider :initialIndex="0" :center='true'>-->
+    <Slider :initialIndex="0" :center='true'>
 
-<!--      <template #title>-->
-<!--        Top sneakers-->
-<!--      </template>-->
+      <template #title>
+        Top sneakers
+      </template>
 
-<!--      <template #nav="{next, prev}">-->
-<!--        <button class="slider-btn-prev" @click="prev">-->
-<!--          <nav-row/>-->
-<!--        </button>-->
-<!--        <button class="slider-btn-next" @click="next">-->
-<!--          <nav-row/>-->
-<!--        </button>-->
-<!--      </template>-->
+      <template #nav="{next, prev}">
+        <button class="slider-btn-prev" @click="prev">
+          <nav-row/>
+        </button>
+        <button class="slider-btn-next" @click="next">
+          <nav-row/>
+        </button>
+      </template>
 
-<!--      <template #slides="{ activeIndex }">-->
-<!--        <Slide #slides v-for="(item, index) in cardsForSlider"-->
-<!--               :key="item.id"-->
-<!--               :item="item"-->
-<!--               :isActiveClass="index === activeIndex ? 'active' : ''"-->
-<!--        />-->
-<!--      </template>-->
-<!--    </Slider>-->
+      <template #slides="{ activeIndex }">
+        <Slide #slides v-for="(item, index) in cardsForSlider"
+               :key="item.id"
+               :item="item"
+               :isActiveClass="index === activeIndex ? 'active' : ''"
+        />
+      </template>
+    </Slider>
     <Category/>
     <LooksGood/>
+    <MoreProducts/>
+    <Glory/>
   </main>
 </template>
 

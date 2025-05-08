@@ -9,7 +9,7 @@
       <div class="category__item ">
         <div class="category__text"><span>WORKOUT</span></div>
         <div class="category__img-wrapper">
-          <img class="category__img" src="/sniker/img/home/category3.png" alt="picture">
+          <img class="category__img" src="@/assets/img/home/category3.png" alt="picture">
           <p class="category__img-text">WORKOUT</p>
         </div>
 
@@ -17,7 +17,7 @@
       <div class="category__item ">
 
         <div class="category__img-wrapper">
-          <img class="category__img" src="/sniker/img/home/category2.png" alt="picture">
+          <img class="category__img" src="@/assets/img/home/category2.png" alt="picture">
           <p class="category__img-text">RUN</p>
         </div>
         <div class="category__text"><span>RUN</span></div>
@@ -25,7 +25,7 @@
       <div class="category__item ">
         <div class="category__text"><span>FOOTBALL</span></div>
         <div class="category__img-wrapper">
-          <img class="category__img" src="/sniker/img/home/category1.png" alt="picture">
+          <img class="category__img" src="@/assets/img/home/category1.png" alt="picture">
           <p class="category__img-text">FOOTBALL</p>
         </div>
 
@@ -37,12 +37,14 @@
 
 <style lang="scss">
 .category {
-padding-bottom: 80px;
+  padding-top: 88px;
+  padding-bottom: 107px;
+
   &__title {
     font-family: $font-family;
     font-weight: 700;
     font-size: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 34px;
   }
 
   &__item {
@@ -120,18 +122,22 @@ padding-bottom: 80px;
     transition: transform .5s;
   }
 
-  &__img-text{
-    position: absolute;
-    font-family: $font-family;
-    font-style: italic;
-    font-weight: 700;
-    font-size: 40px;
-    letter-spacing: 0.3em;
-    color: #fff;
-    z-index: 10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  &__img-text {
+    display: none;
+    @include media-breakpoint-down(xs) {
+      display: block;
+      position: absolute;
+      font-family: $font-family;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 40px;
+      letter-spacing: 0.3em;
+      color: #fff;
+      z-index: 10;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }
 

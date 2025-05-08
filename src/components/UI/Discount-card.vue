@@ -28,7 +28,7 @@ const props = defineProps({
 
 <style lang="scss">
 .promo-card {
-  max-width: 602px;
+  max-width: 606px;
   width: 100%;
   height: 272px;
   border-radius: 18px;
@@ -37,7 +37,7 @@ const props = defineProps({
   display: flex;
   position: relative;
   padding-top: 65px;
-  padding-left: 65px;
+  padding-left: 48px;
 
   @include media-breakpoint-down(xs) {
     max-width: 400px;
