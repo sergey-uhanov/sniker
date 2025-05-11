@@ -20,7 +20,7 @@ const isMobile = inject("isMobile");
     <picture class="never-done-mobile__banner">
       <source srcset="@/assets/img/home/3.1.webp" media="(min-width: 415px)">
 
-      <img src="@/assets/img/home/3.webp" alt="banner">
+      <img src="@/assets/img/home/3.webp" alt="banner" loading="lazy">
     </picture>
     <div class="never-done-mobile__text-block">
       <div class="never-done-mobile__container">

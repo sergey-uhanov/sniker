@@ -1,11 +1,14 @@
 <script setup>
+import {inject} from "vue";
 
+const isMobile= inject('isMobile')
 </script>
 
 <template>
   <div class="banner">
-    <img class="banner__img" src="@/assets/img/home/6.webp" alt="banner" width="1400" height="700"/>
-    <img class="banner__logo"  src="@/assets/img/home/Vector.webp" alt="logo" width="370" height="132"/>
+    <img v-if="!isMobile" class="banner__img" src="@/assets/img/home/6.webp" alt="banner" width="1400" height="700" />
+    <img v-else class="banner__img" src="@/assets/img/home/66.1.webp" alt="banner" width="415" height="200" />
+    <img  class="banner__logo"  src="@/assets/img/home/Vector.webp" alt="logo" width="370" height="132" />
   </div>
 
 </template>

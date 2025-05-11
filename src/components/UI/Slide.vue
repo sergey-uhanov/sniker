@@ -11,7 +11,7 @@ const props = defineProps({
 <template>
   <div :class="['card', isActiveClass]">
     <div class="card__wrapper-img">
-      <img class="card__img" :src=props.item.src alt="shoes picture"/>
+      <img class="card__img" :src=props.item.src alt="shoes picture" loading="lazy"/>
     </div>
 
     <div class="card__title">{{ props.item.name }}</div>

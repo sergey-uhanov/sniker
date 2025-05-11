@@ -9,7 +9,7 @@
       <div class="category__item ">
         <div class="category__text"><span>WORKOUT</span></div>
         <div class="category__img-wrapper">
-          <img class="category__img" src="@/assets/img/home/category3.webp" alt="picture">
+          <img class="category__img" src="@/assets/img/home/category3.webp" alt="picture" loading="lazy">
           <p class="category__img-text">WORKOUT</p>
         </div>
 
@@ -25,7 +25,7 @@
       <div class="category__item ">
         <div class="category__text"><span>FOOTBALL</span></div>
         <div class="category__img-wrapper">
-          <img class="category__img" src="@/assets/img/home/category1.webp" alt="picture">
+          <img class="category__img" src="@/assets/img/home/category1.webp" alt="picture" loading="lazy">
           <p class="category__img-text">FOOTBALL</p>
         </div>
 

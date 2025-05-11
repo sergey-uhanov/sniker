@@ -20,7 +20,7 @@ const props = defineProps({
       <slot name="link-btn"></slot>
     </div>
     <div class="promo-card__img-wrapper">
-      <img class="promo-card__img" :src="props.src" alt="picture sneaker"/>
+      <img class="promo-card__img" :src="props.src" alt="picture sneaker" loading="lazy"/>
     </div>
   </div>
 

@@ -99,6 +99,14 @@ const cardsForSlider = [
 </template>
 
 <style lang="scss">
+.temp{
+  font-family: Monstserrat,sans-serif;
+}
+
+
+
+
+
 .main {
   overflow: hidden;
 }
