@@ -1,0 +1,1 @@
+import{_ as o,c as n,o as a,a as t,e as s}from"./index-BSLMIvlQ.js";const r={},c={class:"summertime"};function m(i,e){return a(),n("section",c,e[0]||(e[0]=[t("h1",{class:"summertime__title"},[s(" At the moment "),t("span",null,"SUMMERTIME MOOD"),s(" Fight the heat in a sunny look! ")],-1)]))}const l=o(r,[["render",m]]);export{l as default};
