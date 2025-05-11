@@ -19,42 +19,42 @@ const cardsForSlider = [
     name: 'Air Max 97',
     price: 20.99,
     url: 'sdfs',
-    src: '/sniker/img/home/shoes3.png'
+    src: '/sniker/img/home/shoes3.webp'
   },
   {
     id: 2,
     name: 'React Presto',
     price: 17.99,
     url: 'sdfs',
-    src: '/sniker/img/home/shoes2.png'
+    src: '/sniker/img/home/shoes2.webp'
   },
   {
     id: 3,
     name: 'KD13 EP',
     price: 50.99,
     url: 'sdfs',
-    src: '/sniker/img/home/shoes1.png'
+    src: '/sniker/img/home/shoes1.webp'
   },
   {
     id: 4,
     name: 'Air Max 97',
     price: 20.99,
     url: 'sdfs',
-    src: '/sniker/img/home/shoes1.png'
+    src: '/sniker/img/home/shoes1.webp'
   },
   {
     id: 5,
     name: 'React Presto',
     price: 17.99,
     url: 'sdfs',
-    src: '/sniker/img/home/shoes3.png'
+    src: '/sniker/img/home/shoes3.webp'
   },
   {
     id: 6,
     name: 'KD13 EP',
     price: 50.99,
     url: 'sdfs',
-    src: '/sniker/img/home/shoes2.png'
+    src: '/sniker/img/home/shoes2.webp'
   }
 ]
 
