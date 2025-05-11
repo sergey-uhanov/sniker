@@ -16,7 +16,7 @@ import Ukraine from "@/components/icons/home/ukraine.vue";
 
 <style lang="scss">
 .glory {
-  padding: 100px 0;
+  padding: 103px 0 98px 0;
   @include media-breakpoint-down(xs) {
     display: none;
   }
@@ -32,7 +32,7 @@ import Ukraine from "@/components/icons/home/ukraine.vue";
     font-weight: 400;
     font-size: 24px;
     text-transform: uppercase;
-    margin-bottom: 30px;
+    margin-bottom: 39px;
   }
 
   &__title {
@@ -41,7 +41,7 @@ import Ukraine from "@/components/icons/home/ukraine.vue";
     font-weight: 900;
     font-size: 48px;
     color: #000;
-    margin-bottom: 30px;
+    margin-bottom: 33px;
   }
 }
 </style>

@@ -35,6 +35,11 @@
       width: 99px;
       height: 36px;
     }
+
+    @include media-breakpoint-down(xs) {
+      top:49%;
+      left:49%;
+    }
   }
   
 }

@@ -36,11 +36,14 @@ import LinkRow from "@/components/icons/home/link-row.vue";
   z-index: 10;
   top: -35px;
 
+  @include media-breakpoint-down(xs) {
+    top: -20px;
+  }
 
   &__container {
     display: flex;
-
     gap: 67px;
+
     @media (max-width: 1080px) {
       flex-direction: column;
       max-width: 700px;
@@ -49,6 +52,8 @@ import LinkRow from "@/components/icons/home/link-row.vue";
 
     @include media-breakpoint-down(xs) {
       max-width: 400px;
+      padding-left: 26px;
+      gap:52px;
     }
   }
 }

@@ -35,7 +35,7 @@ const props = defineProps({
   
   @include media-breakpoint-down(xs) {
     font-size: 10px;
-    padding: 9px 9px 9px 13px;
+    padding: 9px 13px 9px 13px;
     border-radius: 7px;
   }
 }

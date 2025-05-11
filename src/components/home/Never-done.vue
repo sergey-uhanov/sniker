@@ -89,7 +89,7 @@ const isMobile = inject("isMobile");
     font-family: $font-family;
 
     @include media-breakpoint-down(xs) {
-      padding: 16px 0 ;
+      padding: 0 0 16px 0 ;
       background-position: 83%;
     }
 
@@ -103,8 +103,11 @@ const isMobile = inject("isMobile");
     font-weight: 900;
     font-size: 25px;
     margin-bottom: 32px;
+    position: relative;
+
     @include media-breakpoint-down(xs) {
       font-size: 16px;
+      top: 19px;
     }
   }
 
@@ -112,11 +115,13 @@ const isMobile = inject("isMobile");
     font-weight: 900;
     font-size: 18px;
     max-width:380px;
-    margin-bottom:32px;
+
 
     @include media-breakpoint-down(xs) {
       font-size: 12px;
       max-width:289px;
+      line-height: 1.3;
+      margin-bottom:10px;
     }
 
     @include media-breakpoint-down(xxs) {

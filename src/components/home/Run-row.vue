@@ -1,7 +1,7 @@
 <script setup>
-import {computed, onMounted, ref} from 'vue';
+import {computed, inject, onMounted, ref} from 'vue';
 
-const {logosSrc, animationDuration, logoWidth, logoHeight} = defineProps({
+const {logosSrc, animationDuration, logoWidth, logoHeight,logoWidthMobile, logoHeightMobile} = defineProps({
   logosSrc: {
     type: Array,
     default: [
@@ -30,18 +30,29 @@ const {logosSrc, animationDuration, logoWidth, logoHeight} = defineProps({
     type: Number,
     default: 150
   },
+  logoWidthMobile:{
+    type: Number,
+    default: 70
+  },
+  logoHeightMobile:{
+    type: Number,
+    default: 14
+  },
   logoHeight: {
     type: Number,
     default: 49
   }
 });
+const isMobile = inject('isMobile');
+const widthLogo = ref(isMobile ? logoWidthMobile : logoWidth);
+const heightLogo = ref(isMobile ? logoHeightMobile : logoHeight);
 
-const count = ref(Math.ceil(window.innerWidth / logoWidth + 1));
+const count = ref(Math.ceil(window.innerWidth / widthLogo.value + 1));
 const offset = ref(0);
 
+
 const logos = computed(() => {
-  const len = count.value;
-  const logosArray = Array.from({length: len}, (_, i) =>
+  const logosArray = Array.from({length: count.value}, (_, i) =>
       logosSrc[i % logosSrc.length]
   );
   if (logosArray[0] === logosArray[logosArray.length - 1]) {
@@ -61,7 +72,7 @@ onMounted(() => {
     const speed = window.innerWidth / animationDuration;
     offset.value += speed * delta;
 
-    const total = logoWidth * count.value;
+    const total = widthLogo.value * count.value;
     if (offset.value >= total) {
       offset.value -= total;
     }
@@ -91,14 +102,13 @@ const handleResize = () => {
           class="run-row__logo-track"
           :style="`transform: translateX(-${offset}px);`"
       >
-        <a v-for="(logo, idx) in [...logos, ...logos]" :href=logo.link>
+        <a v-for="(logo) in [...logos, ...logos]" :href=logo.link :style="` height: ${heightLogo}px`">
           <img
               :key="logo.imgSrc"
               class="run-row__logo"
               :src="`${logo.imgSrc}`"
               alt="logo"
-              :style="`width: ${logoWidth}px; height: ${logoHeight}px;`"
-
+              :style="`width: ${widthLogo}px; height: ${heightLogo}px;`"
           />
         </a>
       </div>
@@ -132,6 +142,14 @@ const handleResize = () => {
       }
     }
   }
+}
+
+a{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-decoration: none;
+
 }
 </style>
 

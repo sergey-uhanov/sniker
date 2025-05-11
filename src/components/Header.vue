@@ -83,7 +83,7 @@ const handleSwipe = () => {
 <style lang="scss">
 
 .header {
-  padding: 27px 0 20px 0;
+  padding: 27px 0 16px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -101,7 +101,9 @@ const handleSwipe = () => {
 
   &__cart-icon{
     position: relative;
-    left: -8px;
+    @include media-breakpoint-down(xs) {
+      left: -8px;
+    }
   }
 }
 </style>

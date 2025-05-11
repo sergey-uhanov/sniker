@@ -21,7 +21,12 @@
 
 <style lang="scss">
 .more-products {
+  padding-top: 85px;
   color: $white-fc;
+
+  @include media-breakpoint-down(xs) {
+    padding-top: 55px;
+  }
 
   &__title {
     font-family: $font-family;
@@ -29,10 +34,11 @@
     font-size: 40px;
     text-transform: uppercase;
     color: $black-fc;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 
     @include media-breakpoint-down(xs) {
       font-size: 16px;
+      margin-bottom: 22px;
     }
   }
 
@@ -59,7 +65,8 @@
 
     @include media-breakpoint-down(xs) {
       font-size: 16px;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
+      max-width: 125px;
     }
   }
 
@@ -69,12 +76,12 @@
     font-size: 20px;
     max-width: 446px;
     line-height: 1.3;
-    margin-bottom: 25px;
+    margin-bottom: 23px;
 
     @include media-breakpoint-down(xs) {
       font-size: 12px;
       max-width: 264px;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
     }
 
     span {
@@ -91,7 +98,7 @@
     border-radius: 16px;
     
     @include media-breakpoint-down(xs) {
-      padding: 6px 10px 7px 10px;
+      padding: 6px 17px 7px 16px;
       font-size: 10px;
       border-radius: 5px;
     }

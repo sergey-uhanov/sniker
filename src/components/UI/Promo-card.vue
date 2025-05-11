@@ -40,11 +40,13 @@ const props = defineProps({
   padding-left: 65px;
 
   @include media-breakpoint-down(xs) {
-    max-width: 400px;
-    height: auto;
-    padding-top: 30px;
-    padding-left: 33px;
+    max-width: 302px;
+    height: 137px;
+    padding-top: 32px;
+    padding-left: 32px;
   }
+
+
 
   &__title {
     font-family: $font-family;
@@ -56,6 +58,7 @@ const props = defineProps({
 
     @include media-breakpoint-down(xs) {
       font-size: 16px;
+      margin-bottom: 6px;
     }
   }
 

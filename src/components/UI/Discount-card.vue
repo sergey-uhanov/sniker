@@ -10,24 +10,24 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="promo-card">
-    <div class="promo-card__inform">
+  <div class="discount-card">
+    <div class="discount-card__inform">
       <slot name="title">
-        <div class="promo-card__title">NEW</div>
+        <div class="discount-card__title">NEW</div>
       </slot>
 
-      <div class="promo-card__name">{{ props.name }}</div>
+      <div class="discount-card__name">{{ props.name }}</div>
       <slot name="link-btn"></slot>
     </div>
-    <div class="promo-card__img-wrapper">
-      <img class="promo-card__img" :src="props.src" alt="picture sneaker"/>
+    <div class="discount-card__img-wrapper">
+      <img class="discount-card__img" :src="props.src" alt="picture sneaker"/>
     </div>
   </div>
 
 </template>
 
 <style lang="scss">
-.promo-card {
+.discount-card {
   max-width: 606px;
   width: 100%;
   height: 272px;
@@ -40,10 +40,20 @@ const props = defineProps({
   padding-left: 48px;
 
   @include media-breakpoint-down(xs) {
-    max-width: 400px;
-    height: auto;
-    padding-top: 30px;
+    max-width: 302px;
+    height: 137.6px;
+    padding-top: 55px;
     padding-left: 33px;
+  }
+
+  &_img-size{
+    .discount-card__img-wrapper{
+      @include media-breakpoint-down(xs) {
+        max-width: 310px;
+        right: -53px;
+        top: -47px;
+      }
+    }
   }
 
   &__title {
@@ -67,10 +77,12 @@ const props = defineProps({
     color: #000;
     max-width: 228px;
     line-height: 1.2;
+
     @include media-breakpoint-down(xs) {
       font-size: 12px;
-      letter-spacing: 0.01em;
-      max-width: 128px;
+      letter-spacing: 0.0em;
+      max-width: 140px;
+      margin-bottom: 15px;
     }
   }
 
@@ -82,13 +94,23 @@ const props = defineProps({
     right: -16%;
 
     @include media-breakpoint-down(xs) {
-      max-width: 237px;
-      right: -10%;
+      max-width: 277px;
+      right: -70px;
+      top: -51px;
     }
   }
 
   &__img {
     width: 100%;
+  }
+}
+.alt{
+  .discount-card__img-wrapper{
+    @include media-breakpoint-down(xs) {
+      max-width: 310px;
+      right: -70px;
+      top: -65px;
+    }
   }
 }
 </style>

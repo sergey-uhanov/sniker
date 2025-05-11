@@ -45,6 +45,10 @@ const props = defineProps({
     transform: scale(0.85);
     padding: 20px 27px;
   }
+  @include media-breakpoint-down(xs) {
+    max-width: 60.9vw;
+    padding: 40px 0 49px 0;
+  }
 
   @include media-breakpoint-down(xxs) {
     max-width: 62.8vw;
@@ -66,12 +70,13 @@ const props = defineProps({
     z-index: 1;
 
     @include media-breakpoint-down(sm) {
-      font-size: 120px;
+      font-size: 100px;
       top: 40%;
     }
 
-    @include media-breakpoint-down(sm) {
-      font-size: 100px;
+    @include media-breakpoint-down(xs) {
+      font-size: 80px;
+      top: 50%;
     }
   }
 
@@ -88,7 +93,7 @@ const props = defineProps({
     @include media-breakpoint-down(xs) {
       max-width: 200px;
       height: 200px;
-
+      margin-bottom: 5px;
     }
   }
 
@@ -110,7 +115,9 @@ const props = defineProps({
     z-index: 10;
 
     @include media-breakpoint-down(xs) {
-      font-size: 25px;
+      margin-bottom: 17px;
+      margin-left: 16px;
+      font-size: 16px;
     }
   }
 
@@ -123,7 +130,8 @@ const props = defineProps({
     margin-left: 45px;
 
     @include media-breakpoint-down(xs) {
-      font-size: 16px;
+      font-size: 12px;
+      margin-left: 16px;
     }
   }
 
@@ -133,8 +141,8 @@ const props = defineProps({
     right: 30px;
 
     @include media-breakpoint-down(xs) {
-      bottom: 20px;
-      right: 20px;
+      bottom: 23px;
+      right: 23px;
 
       svg {
         width: 35px;

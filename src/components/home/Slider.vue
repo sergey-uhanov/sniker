@@ -30,6 +30,7 @@ const hasTitleSlot = !!slots.title
 const hasNavSlot = !!slots.nav
 
 const isMobile = inject('isMobile')
+
 const wrapper = ref(null)
 const container = ref(null)
 const shift = ref(0)
@@ -57,20 +58,18 @@ function updateSizes() {
 function calculateSpace() {
   const result = ((visibleWidth) - step.value * quantitySlideVisible) / ((quantitySlideVisible - 1) ? quantitySlideVisible - 1 : 1)
 
-  if(props.space == 0){
+  if(props.space === 0){
     spaceBetween.value = result < props.minSpace ? props.minSpace : result;
-  } else{
-    spaceBetween.value =  result < props.minSpace ? props.minSpace : props.space;
+    return
   }
+    spaceBetween.value =  result < props.minSpace ? props.minSpace : props.space;
+
 
 }
 
 onMounted(() => {
-  quantitySlideVisible = props.quantity
   updateSizes();
   window.addEventListener('resize', updateSizes);
-
-
 })
 
 
@@ -216,6 +215,10 @@ function changeIndex(value) {
     will-change: transform;
     transition: transform .3s;
     padding: 20px 0;
+
+    @include media-breakpoint-down(xs) {
+      padding-top: 3px;
+    }
   }
 
 
@@ -244,6 +247,13 @@ function changeIndex(value) {
     display: flex;
     column-gap: 25px;
 
+    @include media-breakpoint-down(xs) {
+      position: relative;
+      left: -9px;
+      top: -1px;
+      column-gap: 11px;
+    }
+
 
     svg {
       @include media-breakpoint-down(xs) {
@@ -261,7 +271,7 @@ function changeIndex(value) {
   }
 
   @include media-breakpoint-down(xs) {
-    left: 18.6vw;
+    left: 15.6vw;
   }
   @include media-breakpoint-down(xxs) {
     left: 15vw;

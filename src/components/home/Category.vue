@@ -40,11 +40,20 @@
   padding-top: 88px;
   padding-bottom: 107px;
 
+  @include media-breakpoint-down(xs) {
+    padding-top: 33px;
+    padding-bottom: 38px;
+  }
+
   &__title {
     font-family: $font-family;
     font-weight: 700;
     font-size: 40px;
     margin-bottom: 34px;
+
+    @include media-breakpoint-down(xs) {
+      font-size: 16px;
+    }
   }
 
   &__item {
@@ -113,6 +122,7 @@
     position: relative;
 
     @include media-breakpoint-down(xs) {
+      height: 330px;
       transform: scale(1.087);
     }
   }
@@ -131,12 +141,12 @@
       font-style: italic;
       font-weight: 700;
       font-size: 40px;
-      letter-spacing: 0.3em;
       color: #fff;
       z-index: 10;
-      top: 50%;
+      top: 47%;
       left: 50%;
       transform: translate(-50%, -50%);
+      letter-spacing: 0.2em;
     }
   }
 }

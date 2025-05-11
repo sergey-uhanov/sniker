@@ -31,6 +31,10 @@ import NikeBlack from "@/components/icons/home/nike-black.vue";
   background: $black-bc;
   padding: 76px 0;
 
+  @include media-breakpoint-down(xs) {
+    padding: 28px 0 0 0;
+  }
+
   &__container {
     display: flex;
     justify-content: space-between;
@@ -40,15 +44,22 @@ import NikeBlack from "@/components/icons/home/nike-black.vue";
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 56px;
     max-width: 110px;
     align-items: center;
+    margin-left: 4px;
+    margin-right: 4px;
+    @include media-breakpoint-down(xs) {
+      gap: 6px;
+      margin-left: 0px;
+      margin-right: 10px;
+    }
   }
 
   &__circle-text {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 43%;
     transform: translate(-50%, -50%);
     z-index: 1;
 
@@ -60,6 +71,13 @@ import NikeBlack from "@/components/icons/home/nike-black.vue";
   &__logo-icon {
     position: relative;
     z-index: 10;
+    top: -13px;
+    left: 11px;
+
+    @include media-breakpoint-down(xs) {
+      top: -17px;
+      left: -3px;
+    }
 
 
     svg {
@@ -73,6 +91,7 @@ import NikeBlack from "@/components/icons/home/nike-black.vue";
 
       @include media-breakpoint-down(xs) {
         width: 160px;
+        height: 100px;
       }
       @include media-breakpoint-down(xxs) {
         width: 130px;
@@ -88,6 +107,10 @@ import NikeBlack from "@/components/icons/home/nike-black.vue";
       font-weight: 400;
       font-size: 18px;
       text-align: center;
+
+      @include media-breakpoint-down(xs) {
+        font-size: 10px;
+      }
     }
   }
 
