@@ -9,7 +9,7 @@ import LinkRow from "@/components/icons/home/link-row.vue";
     <div class="promo__container">
       <PromoCard
           name="AIR JORDAN 1 MID LIGHT SMOKE GREY"
-          src="/sniker/img/home/shoes4.png"
+          src="/sniker/img/home/shoes4.webp"
           link="example.com"
       >
         <a class="promo-link" href='#'>
@@ -18,7 +18,7 @@ import LinkRow from "@/components/icons/home/link-row.vue";
       </PromoCard>
       <PromoCard
           name="AIR JORDAN 1 MID LIGHT SMOKE GREY"
-          src="/sniker/img/home/shoes5.png"
+          src="/sniker/img/home/shoes5.webp"
           link="example.com"
       >
         <a class="promo-link" href="#">
@@ -34,7 +34,7 @@ import LinkRow from "@/components/icons/home/link-row.vue";
 .promo {
   position: relative;
   z-index: 10;
-  top: -35px;
+  top: -29px;
 
   @include media-breakpoint-down(xs) {
     top: -20px;
@@ -42,7 +42,7 @@ import LinkRow from "@/components/icons/home/link-row.vue";
 
   &__container {
     display: flex;
-    gap: 67px;
+    gap: 74px;
 
     @media (max-width: 1080px) {
       flex-direction: column;

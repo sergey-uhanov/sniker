@@ -12,7 +12,7 @@ import NikeBlack from "@/components/icons/home/nike-black.vue";
         <li class="footer__item"><a href="#">MEN</a></li>
       </ul>
       <div class="footer__logo">
-        <img class="footer__circle-text" src="@/assets/img/home/1234.png" alt="logo">
+        <img class="footer__circle-text" src="@/assets/img/home/1234.webp" alt="logo">
         <div class="footer__logo-icon">
           <NikeBlack/>
         </div>

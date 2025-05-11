@@ -15,7 +15,7 @@
 
 <style lang="scss">
 .summertime{
-  padding: 83px 0 72px 0;
+  padding: 86px 0 72px 0;
   position: relative;
   left: -4px;
 

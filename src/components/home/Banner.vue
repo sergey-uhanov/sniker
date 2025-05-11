@@ -4,8 +4,8 @@
 
 <template>
   <div class="banner">
-    <img class="banner__img" src="@/assets/img/home/6.png" alt="banner" width="1400" height="700"/>
-    <img class="banner__logo"  src="@/assets/img/home/Vector.png" alt="logo" width="370" height="132"/>
+    <img class="banner__img" src="@/assets/img/home/6.webp" alt="banner" width="1400" height="700"/>
+    <img class="banner__logo"  src="@/assets/img/home/Vector.webp" alt="logo" width="370" height="132"/>
   </div>
 
 </template>

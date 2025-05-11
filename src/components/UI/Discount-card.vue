@@ -48,8 +48,11 @@ const props = defineProps({
 
   &_img-size{
     .discount-card__img-wrapper{
+      max-width: 522px;
+      top: -27%;
+      right: -16%;
       @include media-breakpoint-down(xs) {
-        max-width: 310px;
+        max-width: 279px;
         right: -53px;
         top: -47px;
       }
@@ -88,6 +91,7 @@ const props = defineProps({
 
   &__img-wrapper {
     max-width: 490px;
+    width: 100%;
     object-fit: contain;
     position: absolute;
     top: -29%;
@@ -106,10 +110,15 @@ const props = defineProps({
 }
 .alt{
   .discount-card__img-wrapper{
+    max-width: 592px;
+    top: -44%;
+    right: -22%;
+    transform: rotate(-3deg);
     @include media-breakpoint-down(xs) {
-      max-width: 310px;
-      right: -70px;
-      top: -65px;
+      transform: rotate(0deg);
+      max-width: 340px;
+      right: -65px;
+      top: -62px;
     }
   }
 }

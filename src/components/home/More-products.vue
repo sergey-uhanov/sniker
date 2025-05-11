@@ -44,7 +44,7 @@
 
   &__content {
     padding: 44px 0;
-    background: url("@/assets/img/home/back-ground.png") no-repeat;
+    background: url("@/assets/img/home/back-ground.webp") no-repeat;
     background-size: cover;
     @include media-breakpoint-down(xs) {
       padding-top: 12px;

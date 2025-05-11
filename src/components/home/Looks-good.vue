@@ -22,7 +22,7 @@ const isMobile = inject("isMobile");
         <DiscountCard
             class="alt"
             name="on your first purchase"
-            src="/sniker/img/home/shoes7.png"
+            src="/sniker/img/home/shoes7.webp"
         >
           <template #title>
             <div class="promo-title"><span>-20%</span> Discount</div>
@@ -36,7 +36,7 @@ const isMobile = inject("isMobile");
         <DiscountCard
             class="discount-card_img-size"
             name="on your first purchase"
-            src="/sniker/img/home/shoes6.png"
+            src="/sniker/img/home/shoes6.webp"
 
         >
           <template #title>
@@ -112,15 +112,23 @@ const isMobile = inject("isMobile");
 }
 
 .discounts {
+  margin-top: 73px;
+  margin-bottom: 20px;
+
+  @include media-breakpoint-down(xs) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
   &__container {
     display: flex;
-    flex-direction: column;
+
     gap: 50px;
 
 
     @include media-breakpoint-down(xs) {
       margin-left: 12px;
+      flex-direction: column;
     }
   }
 }

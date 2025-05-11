@@ -18,9 +18,9 @@ const isMobile = inject("isMobile");
 
   <section class="never-done-mobile" v-else>
     <picture class="never-done-mobile__banner">
-      <source srcset="@/assets/img/home/3.1.png" media="(min-width: 415px)">
+      <source srcset="@/assets/img/home/3.1.webp" media="(min-width: 415px)">
 
-      <img src="@/assets/img/home/3.png" alt="banner">
+      <img src="@/assets/img/home/3.webp" alt="banner">
     </picture>
     <div class="never-done-mobile__text-block">
       <div class="never-done-mobile__container">
@@ -36,7 +36,7 @@ const isMobile = inject("isMobile");
 
 <style lang="scss">
 .never-done {
-  background-image: url('@/assets/img/home/1.png');
+  background-image: url('@/assets/img/home/1.webp');
   background-size: cover;
 
   background-repeat: no-repeat;
@@ -80,7 +80,7 @@ const isMobile = inject("isMobile");
   }
 
   &__text-block{
-    background-image: url('@/assets/img/home/2.png');
+    background-image: url('@/assets/img/home/2.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right;

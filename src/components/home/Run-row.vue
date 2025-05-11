@@ -7,17 +7,17 @@ const {logosSrc, animationDuration, logoWidth, logoHeight,logoWidthMobile, logoH
     default: [
       {
         link: 'https://www.nike.com',
-        imgSrc: '/sniker/img/home/4.png',
+        imgSrc: '/sniker/img/home/4.webp',
         name: 'nike'
       },
       {
         link: 'https://www.adidas.ua/',
-        imgSrc: '/sniker/img/home/44.png',
+        imgSrc: '/sniker/img/home/44.webp',
         name: 'nike'
       },
       {
         link: 'https://ua.puma.com/uk/',
-        imgSrc: '/sniker/img/home/444.png',
+        imgSrc: '/sniker/img/home/444.webp',
         name: 'nike'
       }
     ]
@@ -44,8 +44,8 @@ const {logosSrc, animationDuration, logoWidth, logoHeight,logoWidthMobile, logoH
   }
 });
 const isMobile = inject('isMobile');
-const widthLogo = ref(isMobile ? logoWidthMobile : logoWidth);
-const heightLogo = ref(isMobile ? logoHeightMobile : logoHeight);
+const widthLogo = ref(isMobile.value ? logoWidthMobile : logoWidth);
+const heightLogo = ref(isMobile.value ? logoHeightMobile : logoHeight);
 
 const count = ref(Math.ceil(window.innerWidth / widthLogo.value + 1));
 const offset = ref(0);
