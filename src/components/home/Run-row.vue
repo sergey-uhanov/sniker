@@ -1,7 +1,7 @@
 <script setup>
 import {computed, inject, onMounted, ref} from 'vue';
 
-const {logosSrc, animationDuration, logoWidth, logoHeight,logoWidthMobile, logoHeightMobile} = defineProps({
+const {logosSrc, animationDuration, logoWidth, logoHeight, logoWidthMobile, logoHeightMobile} = defineProps({
   logosSrc: {
     type: Array,
     default: [
@@ -30,11 +30,11 @@ const {logosSrc, animationDuration, logoWidth, logoHeight,logoWidthMobile, logoH
     type: Number,
     default: 150
   },
-  logoWidthMobile:{
+  logoWidthMobile: {
     type: Number,
     default: 70
   },
-  logoHeightMobile:{
+  logoHeightMobile: {
     type: Number,
     default: 14
   },
@@ -46,7 +46,6 @@ const {logosSrc, animationDuration, logoWidth, logoHeight,logoWidthMobile, logoH
 const isMobile = inject('isMobile');
 const widthLogo = ref(isMobile.value ? logoWidthMobile : logoWidth);
 const heightLogo = ref(isMobile.value ? logoHeightMobile : logoHeight);
-
 const count = ref(Math.ceil(window.innerWidth / widthLogo.value + 1));
 const offset = ref(0);
 
@@ -63,7 +62,6 @@ const logos = computed(() => {
 
 onMounted(() => {
   let lastTime = performance.now();
-
 
   function step(now) {
     const delta = (now - lastTime) / 1000;
@@ -117,8 +115,6 @@ const handleResize = () => {
 </template>
 
 <style lang="scss">
-
-
 .run-row {
   overflow: hidden;
 
@@ -144,12 +140,11 @@ const handleResize = () => {
   }
 }
 
-a{
+a {
   margin: 0;
   padding: 0;
   border: 0;
   text-decoration: none;
-
 }
 </style>
 

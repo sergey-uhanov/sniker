@@ -15,17 +15,16 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  space:{
+  space: {
     type: Number,
     default: 0
   },
-  minSpace:{
+  minSpace: {
     type: Number,
     default: 15
   }
 })
 const slots = useSlots()
-
 const hasTitleSlot = !!slots.title
 const hasNavSlot = !!slots.nav
 
@@ -58,11 +57,11 @@ function updateSizes() {
 function calculateSpace() {
   const result = ((visibleWidth) - step.value * quantitySlideVisible) / ((quantitySlideVisible - 1) ? quantitySlideVisible - 1 : 1)
 
-  if(props.space === 0){
+  if (props.space === 0) {
     spaceBetween.value = result < props.minSpace ? props.minSpace : result;
     return
   }
-    spaceBetween.value =  result < props.minSpace ? props.minSpace : props.space;
+  spaceBetween.value = result < props.minSpace ? props.minSpace : props.space;
 
 
 }
@@ -88,24 +87,20 @@ function getMinShift() {
 
 function nextStep() {
   if (getMaxShift() > -(shift.value - fullStep.value)) {
-
     const countStep = Math.round((shift.value / fullStep.value) - 1)
     shift.value = fullStep.value * countStep
     changeIndex(activeIndex.value + 1)
   }
-
   applyTransform();
 }
 
 
 function prevStep() {
   if (getMinShift() <= -(shift.value + fullStep.value)) {
-
     const countStep = Math.round((shift.value / fullStep.value) + 1)
     shift.value = fullStep.value * countStep
     changeIndex(activeIndex.value - 1)
   }
-
   applyTransform();
 }
 
@@ -142,17 +137,11 @@ function onDrag(event) {
 
 function endDrag() {
   isDragging = false
-
   const countStep = Math.round(shift.value / fullStep.value)
-
-
   shift.value = fullStep.value * countStep
-
-
   if (shift.value > 0) {
     shift.value = 0
   }
-
   if (-shift.value > totalWidth - fullStep.value && !isMobile.value) {
     shift.value += fullStep.value
   }
@@ -185,10 +174,12 @@ function changeIndex(value) {
         <div class="slider__title">
           <slot name="title"/>
         </div>
+
         <nav class="slider__nav-btn-block">
           <slot name="nav" :next="nextStep" :prev="prevStep"/>
         </nav>
       </div>
+
       <div class="slider__center-content" ref="container" :class="props.center? 'center':''">
         <div
             class="slider__wrapper"
@@ -215,6 +206,7 @@ function changeIndex(value) {
     will-change: transform;
     transition: transform .3s;
     padding: 20px 0;
+    user-select: none;
 
     @include media-breakpoint-down(xs) {
       padding-top: 3px;

@@ -6,29 +6,38 @@
   <section class="category">
     <div class="category__container">
       <div class="category__title">Buy by category</div>
+
       <div class="category__item ">
-        <div class="category__text"><span>WORKOUT</span></div>
+        <div class="category__text">
+          <span>WORKOUT</span>
+        </div>
+
         <div class="category__img-wrapper">
           <img class="category__img" src="@/assets/img/home/category3.webp" alt="picture" loading="lazy">
           <p class="category__img-text">WORKOUT</p>
         </div>
-
       </div>
-      <div class="category__item ">
 
+      <div class="category__item ">
         <div class="category__img-wrapper">
           <img class="category__img" src="@/assets/img/home/category2.webp" alt="picture">
           <p class="category__img-text">RUN</p>
         </div>
-        <div class="category__text"><span>RUN</span></div>
+
+        <div class="category__text">
+          <span>RUN</span>
+        </div>
       </div>
+
       <div class="category__item ">
-        <div class="category__text"><span>FOOTBALL</span></div>
+        <div class="category__text">
+          <span>FOOTBALL</span>
+        </div>
+
         <div class="category__img-wrapper">
           <img class="category__img" src="@/assets/img/home/category1.webp" alt="picture" loading="lazy">
           <p class="category__img-text">FOOTBALL</p>
         </div>
-
       </div>
     </div>
   </section>

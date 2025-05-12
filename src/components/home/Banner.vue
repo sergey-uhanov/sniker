@@ -1,14 +1,14 @@
 <script setup>
 import {inject} from "vue";
 
-const isMobile= inject('isMobile')
+const isMobile = inject('isMobile')
 </script>
 
 <template>
   <div class="banner">
-    <img v-if="!isMobile" class="banner__img" src="@/assets/img/home/6.webp" alt="banner" width="1400" height="700" />
-    <img v-else class="banner__img" src="@/assets/img/home/66.1.webp" alt="banner" width="415" height="200" />
-    <img  class="banner__logo"  src="@/assets/img/home/Vector.webp" alt="logo" width="370" height="132" />
+    <img v-if="!isMobile" class="banner__img" src="@/assets/img/home/6.webp" alt="banner" width="1400" height="700"/>
+    <img v-else class="banner__img" src="@/assets/img/home/66.1.webp" alt="banner" width="415" height="200"/>
+    <img class="banner__logo" src="@/assets/img/home/Vector.webp" alt="logo" width="370" height="132"/>
   </div>
 
 </template>
@@ -27,11 +27,11 @@ const isMobile= inject('isMobile')
     filter: blur(8px);
   }
 
-  &__logo{
+  &__logo {
     position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 3;
 
     @include media-breakpoint-down(sm) {
@@ -40,10 +40,10 @@ const isMobile= inject('isMobile')
     }
 
     @include media-breakpoint-down(xs) {
-      top:49%;
-      left:49%;
+      top: 49%;
+      left: 49%;
     }
   }
-  
+
 }
 </style>

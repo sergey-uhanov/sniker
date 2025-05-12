@@ -1,5 +1,4 @@
 <script setup>
-
 import PromoCard from "@/components/UI/Promo-card.vue";
 import LinkRow from "@/components/icons/home/link-row.vue";
 </script>
@@ -16,6 +15,7 @@ import LinkRow from "@/components/icons/home/link-row.vue";
           <link-row/>
         </a>
       </PromoCard>
+
       <PromoCard
           name="AIR JORDAN 1 MID LIGHT SMOKE GREY"
           src="/sniker/img/home/shoes5.webp"
@@ -27,7 +27,6 @@ import LinkRow from "@/components/icons/home/link-row.vue";
       </PromoCard>
     </div>
   </section>
-
 </template>
 
 <style lang="scss">
@@ -53,7 +52,7 @@ import LinkRow from "@/components/icons/home/link-row.vue";
     @include media-breakpoint-down(xs) {
       max-width: 400px;
       padding-left: 26px;
-      gap:52px;
+      gap: 52px;
     }
   }
 }
@@ -62,14 +61,14 @@ import LinkRow from "@/components/icons/home/link-row.vue";
   display: block;
   margin-top: 17px;
   margin-left: 35px;
-  
+
   @include media-breakpoint-down(xs) {
     width: 25px;
     height: 25px;
     margin-bottom: 15px;
     margin-left: 18px;
 
-    svg{
+    svg {
       width: 25px;
       height: 25px;
     }

@@ -9,7 +9,7 @@ import {inject, ref, watch} from 'vue'
 import BurgerMenuIcon from "@/components/UI/header/Burger-menu-icon.vue";
 import NavMenu from "@/components/UI/header/Filter-menu.vue";
 import BurgerMenu from "@/components/UI/header/Burger-menu.vue";
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
 
 const isMobile = inject('isMobile')
 const isOpen = ref(false);
@@ -21,7 +21,7 @@ const minSwipeDistance = 50;
 
 watch(isOpen, (open) => {
   if (open && menuRef.value) {
-    disableBodyScroll(menuRef.value, { reserveScrollBarGap: true })
+    disableBodyScroll(menuRef.value, {reserveScrollBarGap: true})
   } else if (menuRef.value) {
     enableBodyScroll(menuRef.value)
   }
@@ -64,18 +64,23 @@ const handleSwipe = () => {
   <header class="header">
     <div class="header__container">
       <Nav-menu class="header__nav-menu" v-if="!isMobile"/>
+
       <burger-menu-icon
           v-else :isOpen
           @changeMobileMenu="isOpen = !isOpen"/>
+
       <logo/>
+
       <div class="header__icon-block">
         <account-icon v-show="!isMobile"/>
         <Search-input v-show="!isMobile"/>
-        <cart-icon class="header__cart-icon" />
+        <cart-icon class="header__cart-icon"/>
       </div>
+
     </div>
+
     <div ref="menuRef">
-      <Burger-menu :isOpen />
+      <Burger-menu :isOpen/>
     </div>
   </header>
 </template>
@@ -99,7 +104,7 @@ const handleSwipe = () => {
     column-gap: 48px;
   }
 
-  &__cart-icon{
+  &__cart-icon {
     position: relative;
     @include media-breakpoint-down(xs) {
       left: -8px;

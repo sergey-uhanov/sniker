@@ -1,6 +1,5 @@
 <script setup="">
 
-import Slider from "@/components/home/Slider.vue";
 import LinkBtn from "@/components/UI/buttons/Link-btn.vue";
 import DiscountCard from "@/components/UI/Discount-card.vue";
 import {inject} from "vue";
@@ -27,6 +26,7 @@ const isMobile = inject("isMobile");
           <template #title>
             <div class="promo-title"><span>-20%</span> Discount</div>
           </template>
+
           <template class="link-button" #link-btn>
             <Link-btn v-if="!isMobile">Shop now</Link-btn>
             <link-row v-else width=25 left="17"/>
@@ -42,20 +42,19 @@ const isMobile = inject("isMobile");
           <template #title>
             <div class="promo-title"><span>-20%</span> Discount</div>
           </template>
+
           <template class="link-button" #link-btn>
             <Link-btn v-if="!isMobile">Shop now</Link-btn>
-            <link-row v-else width=25 left="17" />
+            <link-row v-else width=25 left="17"/>
           </template>
         </DiscountCard>
       </div>
     </div>
   </section>
-
 </template>
 
 <style lang="scss">
 .looks {
-
 
   &__title {
     font-family: $font-family;
@@ -70,6 +69,7 @@ const isMobile = inject("isMobile");
     @include media-breakpoint-down(xs) {
       font-size: 24px;
       padding-bottom: 53px;
+
       span {
         display: block;
         line-height: 1.2;
@@ -82,7 +82,6 @@ const isMobile = inject("isMobile");
           display: flex;
           justify-content: center;
           position: relative;
-
           right: 5px;
         }
 
@@ -95,7 +94,6 @@ const isMobile = inject("isMobile");
     }
   }
 }
-
 
 
 .promo-card-wrapper {
@@ -122,9 +120,7 @@ const isMobile = inject("isMobile");
 
   &__container {
     display: flex;
-
     gap: 50px;
-
 
     @include media-breakpoint-down(xs) {
       margin-left: 12px;
@@ -155,15 +151,14 @@ const isMobile = inject("isMobile");
       margin-right: 0;
     }
   }
-
 }
 
 .link-button {
   margin-top: 20px;
 }
 
-.row-link{
-  svg{
+.row-link {
+  svg {
     width: 25px;
     height: 25px;
   }

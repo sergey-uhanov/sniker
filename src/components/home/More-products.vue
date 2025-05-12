@@ -7,12 +7,18 @@
     <div class="more-products__container">
       <div class="more-products__title">More Nike products</div>
     </div>
+
     <div class="more-products__content">
       <div class="more-products__container">
         <div class="more-products__sub-title">
           YOUR NIKE MEMBERSHIP
         </div>
-        <p class="more-products__description">Join our members and show your love with <span>Nike By You!</span></p>
+
+        <p class="more-products__description">
+          Join our members and show your love with
+          <span>Nike By You!</span>
+        </p>
+
         <button class="more-products__btn">Join Us</button>
       </div>
     </div>
@@ -46,10 +52,11 @@
     padding: 44px 0;
     background: url("@/assets/img/home/back-ground.webp") no-repeat;
     background-size: cover;
+
     @include media-breakpoint-down(xs) {
       padding-top: 12px;
       padding-bottom: 8px;
-      background-position:40%;
+      background-position: 40%;
     }
   }
 
@@ -89,21 +96,20 @@
     }
   }
 
-  &__btn{
+  &__btn {
     font-family: $font-family;
     font-weight: 400;
     font-size: 16px;
     background: $white-bc;
     padding: 10px 46px;
     border-radius: 16px;
-    
+
     @include media-breakpoint-down(xs) {
       padding: 6px 17px 7px 16px;
       font-size: 10px;
       border-radius: 5px;
     }
   }
-
 }
 
 </style>

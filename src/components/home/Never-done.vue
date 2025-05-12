@@ -1,5 +1,4 @@
 <script setup>
-
 import MainBtn from "@/components/UI/buttons/Main-btn.vue";
 import {inject} from "vue";
 
@@ -10,8 +9,10 @@ const isMobile = inject("isMobile");
   <section class="never-done" v-if="!isMobile">
     <div class="never-done__container">
       <h1 class="never-done__title">WE ARE NEVER DONE</h1>
+
       <p class="never-done__sub-title">Celebrating 50 years of Nike from May 16th!
         Exclusive products, experiences and much more await you for five days. Scan and join the Nike app!</p>
+
       <Main-btn>Celebrate with us</Main-btn>
     </div>
   </section>
@@ -22,23 +23,24 @@ const isMobile = inject("isMobile");
 
       <img src="@/assets/img/home/3.webp" alt="banner" loading="lazy">
     </picture>
+
     <div class="never-done-mobile__text-block">
       <div class="never-done-mobile__container">
         <h1 class="never-done-mobile__title">WE ARE NEVER DONE</h1>
+
         <p class="never-done-mobile__sub-title">Celebrating 50 years of Nike from May 16th!
           Exclusive products, experiences and much more await you for five days. Scan and join the Nike app!</p>
+
         <Main-btn>Celebrate with us</Main-btn>
       </div>
     </div>
   </section>
-
 </template>
 
 <style lang="scss">
 .never-done {
   background-image: url('@/assets/img/home/1.webp');
   background-size: cover;
-
   background-repeat: no-repeat;
   padding: 56px 0 30px 0;
   font-family: $font-family;
@@ -79,17 +81,17 @@ const isMobile = inject("isMobile");
     width: 100%;
   }
 
-  &__text-block{
+  &__text-block {
     background-image: url('@/assets/img/home/2.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right;
-    padding: 50px 0 ;
+    padding: 50px 0;
     color: $white-fc;
     font-family: $font-family;
 
     @include media-breakpoint-down(xs) {
-      padding: 0 0 16px 0 ;
+      padding: 0 0 16px 0;
       background-position: 83%;
     }
 
@@ -98,7 +100,7 @@ const isMobile = inject("isMobile");
     }
   }
 
-  &__title{
+  &__title {
     font-style: italic;
     font-weight: 900;
     font-size: 25px;
@@ -114,18 +116,17 @@ const isMobile = inject("isMobile");
   &__sub-title {
     font-weight: 900;
     font-size: 18px;
-    max-width:380px;
-
+    max-width: 380px;
 
     @include media-breakpoint-down(xs) {
       font-size: 12px;
-      max-width:289px;
+      max-width: 289px;
       line-height: 1.3;
-      margin-bottom:10px;
+      margin-bottom: 10px;
     }
 
     @include media-breakpoint-down(xxs) {
-      max-width:249px;
+      max-width: 249px;
     }
   }
 }

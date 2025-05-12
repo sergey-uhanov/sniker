@@ -8,18 +8,25 @@ import NikeBlack from "@/components/icons/home/nike-black.vue";
     <div class="footer__container">
       <ul class="footer__list">
         <li class="footer__item"><a href="#">ALL</a></li>
+
         <li class="footer__item"><a href="#">WOMAN</a></li>
+
         <li class="footer__item"><a href="#">MEN</a></li>
       </ul>
+
       <div class="footer__logo">
         <img class="footer__circle-text" src="@/assets/img/home/1234.webp" alt="logo">
+
         <div class="footer__logo-icon">
           <NikeBlack/>
         </div>
       </div>
+
       <ul class="footer__list">
         <li class="footer__item"><a href="#">WORCOUT</a></li>
+
         <li class="footer__item"><a href="#">RUN</a></li>
+
         <li class="footer__item"><a href="#">FOOTBALL</a></li>
       </ul>
     </div>
@@ -49,6 +56,7 @@ import NikeBlack from "@/components/icons/home/nike-black.vue";
     align-items: center;
     margin-left: 4px;
     margin-right: 4px;
+
     @include media-breakpoint-down(xs) {
       gap: 6px;
       margin-left: 0px;
@@ -113,6 +121,5 @@ import NikeBlack from "@/components/icons/home/nike-black.vue";
       }
     }
   }
-
 }
 </style>
